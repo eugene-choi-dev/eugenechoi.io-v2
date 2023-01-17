@@ -79,7 +79,7 @@ const sprite = new THREE.TextureLoader().load("assets/disc.png");
 const geometry = new THREE.SphereGeometry(3, 100, 100);
 const material = new THREE.PointsMaterial({
   size: 0.03,
-  color: 0x2b2b2b,
+  color: 0x303030,
   map: sprite,
   alphaTest: 0.5,
 });
