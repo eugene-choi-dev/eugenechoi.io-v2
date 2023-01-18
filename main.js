@@ -82,11 +82,10 @@ document.addEventListener("load", homeNavActiveOnLoad());
 
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
-import disc from "three/src/disc.png";
 
 // Scene //
 const scene = new THREE.Scene();
-const sprite = new THREE.TextureLoader().load(disc);
+const sprite = new THREE.TextureLoader().load("assets/disc.png");
 
 // Mesh //
 // const geometry = new THREE.SphereGeometry(3, 70, 70);
