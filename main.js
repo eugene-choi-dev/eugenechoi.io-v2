@@ -85,7 +85,7 @@ import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 
 // Scene //
 const scene = new THREE.Scene();
-const sprite = new THREE.TextureLoader().load("assets/disc.png");
+const sprite = new THREE.TextureLoader().load("public/disc.png");
 
 // Mesh //
 // const geometry = new THREE.SphereGeometry(3, 70, 70);
