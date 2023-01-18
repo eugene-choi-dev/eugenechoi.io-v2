@@ -129,6 +129,7 @@ button {
   animation-delay: 0.75s;
   font-family: "helmet-regular";
   font-size: 64px;
+  z-index: 9;
 }
 
 #Splash span {

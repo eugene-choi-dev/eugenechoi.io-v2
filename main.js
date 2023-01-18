@@ -1,6 +1,19 @@
 // --  --> //
 // <--  -- //
 
+// -- Splash --> //
+
+const splash = document.getElementById("Splash");
+
+var removeSplash = function() {
+  splash.remove();
+}
+window.onload = function() {
+  setTimeout(removeSplash, 1500);
+}
+
+// <-- Splash -- //
+
 // -- Light Switch --> //
 
 const page = document.getElementById("Page");
@@ -69,10 +82,11 @@ document.addEventListener("load", homeNavActiveOnLoad());
 
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
+import disc from "three/src/disc.png";
 
 // Scene //
 const scene = new THREE.Scene();
-const sprite = new THREE.TextureLoader().load("assets/disc.png");
+const sprite = new THREE.TextureLoader().load(disc);
 
 // Mesh //
 // const geometry = new THREE.SphereGeometry(3, 70, 70);
