@@ -1,7 +1,7 @@
-// --  --> //
-// <--  -- //
+// ---  ---> //
+// <---  --- //
 
-// -- Splash --> //
+// --- Splash ---> //
 
 const splash = document.getElementById("Splash");
 
@@ -9,12 +9,12 @@ var removeSplash = function() {
   splash.remove();
 }
 window.onload = function() {
-  setTimeout(removeSplash, 1500);
+  setTimeout(removeSplash, 1600);
 }
 
-// <-- Splash -- //
+// <--- Splash --- //
 
-// -- Light Switch --> //
+// --- Light Switch ---> //
 
 const page = document.getElementById("Page");
 const lightSwitchLight = document.getElementsByClassName("light-switch-light");
@@ -40,9 +40,9 @@ document.addEventListener("load", isLight());
 lightSwitchLight[0].addEventListener("click", isLight);
 lightSwitchDark[0].addEventListener("click", isDark);
 
-// <-- Light Switch -- //
+// <--- Light Switch --- //
 
-// -- Active Nav Link/Section --> //
+// --- Active Nav Link/Section ---> //
 
 const navItems = document.getElementsByClassName("nav-item");
 const navLinks = document.getElementsByClassName("nav-link");
@@ -76,9 +76,9 @@ const homeNavActiveOnLoad = () => {
 
 document.addEventListener("load", homeNavActiveOnLoad());
 
-// <-- Active Nav Link/Section -- //
+// <--- Active Nav Link/Section --- //
 
-// -- Three.js Background --> //
+// --- Three.js Background ---> //
 
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
@@ -154,4 +154,4 @@ const loop = () => {
 };
 loop();
 
-// <-- Three.js Background -- //
+// <--- Three.js Background --- //
