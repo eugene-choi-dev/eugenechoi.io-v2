@@ -9,7 +9,7 @@ var removeSplash = function() {
   splash.remove();
 }
 window.onload = function() {
-  setTimeout(removeSplash, 1600);
+  setTimeout(removeSplash, 1800);
 }
 
 // <--- Splash --- //
