@@ -4,19 +4,19 @@
 /* --- Fonts ---> */
 
 @font-face {
-  font-family: "helvetica-regular";
+  font-family: "copy-font-regular";
   src: url("/assets/fonts/HelveticaNowDisplay-Regular.woff") format("woff"),
     url("/assets/fonts/HelveticaNowDisplay-Regular.woff2") format("woff2");
 }
 
 @font-face {
-  font-family: "helvetica-medium";
+  font-family: "copy-font-medium";
   src: url("/assets/fonts/HelveticaNowDisplay-Medium.woff") format("woff"),
     url("/assets/fonts/HelveticaNowDisplay-Medium.woff2") format("woff2");
 }
 
 @font-face {
-  font-family: "helmet-regular";
+  font-family: "header-font";
   src: url("/assets/fonts/Helmet-Regular.woff") format("woff"),
     url("/assets/fonts/Helmet-Regular.woff2") format("woff2");
 }
@@ -69,7 +69,7 @@ main,
   height: 100%;
   width: 100%;
   background-color: var(---light-color);
-  font-family: "helvetica-medium";
+  font-family: "copy-font-medium";
   opacity: 0%;
   animation: fadeInAnimation ease 1s;
   animation-iteration-count: 1;
@@ -93,13 +93,13 @@ p {
 }
 
 a {
-  font-family: "helvetica-medium";
+  font-family: "copy-font-medium";
   text-decoration: none;
   color: var(---dark-color);
 }
 
 button {
-  font-family: "helvetica-regular";
+  font-family: "copy-font-regular";
   font-size: 16px;
   border: none;
   cursor: pointer;
@@ -127,7 +127,7 @@ button {
   animation-iteration-count: 1;
   animation-fill-mode: forwards;
   animation-delay: 1s;
-  font-family: "helmet-regular";
+  font-family: "header-font";
   font-size: 64px;
   z-index: 9;
 }
@@ -161,13 +161,15 @@ button {
 }
 
 .header-title {
-  font-family: "helmet-regular";
+  font-family: "regulator-nova", sans-serif;
+  font-weight: 300;
+  font-style: normal;
   font-size: 100px;
   line-height: 1;
 }
 
 .header-label {
-  font-family: "helvetica-medium";
+  font-family: "copy-font-medium";
   font-size: 26px;
   line-height: 1.25;
   margin-left: 30px;
@@ -339,7 +341,9 @@ section {
   opacity: 85%;
   transition: opacity ease-in 0.5s;
   transition-delay: 0.45s;
+  z-index: 2;
 }
+
 .section-page {
   float: right;
   height: 100%;
@@ -359,3 +363,43 @@ section {
 }
 
 /* <--- All Page Sections --- */
+
+/* --- Info Section ---> */
+
+#Info-Section .info-link-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+#Info-Section .info-link {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  height: 17px;
+  width: 100px;
+  margin: 4px;
+}
+
+#Info-Section .info-link .info-link-text {
+  font-family: "copy-font-medium";
+  opacity: 100%;
+  transition: opacity ease-in 0.15s;
+}
+
+#Info-Section .info-link .info-link-text:hover {
+  opacity: 70%;
+  transition: opacity ease-in 0.15s;
+}
+
+#Info-Section .info-link img {
+  height: 100%;
+  margin-left: 5px;
+}
+
+#Info-Section .info-link:hover img {
+  animation: rotate 11s linear infinite;
+}
+
+
+/* <--- Info Section --- */
