@@ -155,3 +155,24 @@ const loop = () => {
 loop();
 
 // <--- Three.js Background --- //
+
+// --- AJAX ---> //
+
+document.addEventListener("DOMContentLoaded", function() {
+  let navLinks = document.querySelectorAll(".nav-item a");
+
+  navLinks.forEach(function (navLink) {
+    navLink.addEventListener("click", function(e) {
+      e.preventDefault();
+      let url = this.getAttribute("href");
+      fetch(url)
+      .then(response=> response.text())
+      .then(html => {
+        document.querySelector("#content").innerHTML = html;
+      })
+      .catch(error => console.log(error));
+    });
+  });
+});
+
+// <--- AJAX --- //
