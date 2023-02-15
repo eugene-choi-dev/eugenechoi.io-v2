@@ -49,7 +49,8 @@ const navLinks = document.querySelectorAll(".nav-link");
 const main = document.querySelector("main");
 
 Array.from(navLinks).forEach((navLink, index) => {
-  const fetchPage = () => {
+  const fetchPage = (event) => {
+    event.preventDefault();
     const url = `${navLink.dataset.pages}.html`;
     setTimeout(function () {
       fetch(url)
@@ -76,8 +77,9 @@ Array.from(navLinks).forEach((navLink, index) => {
     navItems[index].classList.add("active");
   };
 
+  navLink.addEventListener("click", fetchPage); // does not work when wrapped in anonymous function
+
   navLink.addEventListener("click", () => {
-    fetchPage();
     removeCurrentActive();
     activateNavItem();
   });
@@ -103,7 +105,7 @@ const homeActiveOnLoad = () => {
 }
 
 document.addEventListener("load", homeNavActiveOnLoad());
-document.addEventListener("load", fetchHomeOnLoad()); // (not DRY?)
+document.addEventListener("load", fetchHomeOnLoad()); // not DRY?
 document.addEventListener("load", homeActiveOnLoad());
 
 // <--- Active Nav Link/Getting Pages Using Fetch --- //
