@@ -99,7 +99,7 @@ const fetchHomeOnLoad = () => {
 };
 
 document.addEventListener("load", homeNavActiveOnLoad());
-document.addEventListener("load", fetchHomeOnLoad()); // (not DRY?)
+// document.addEventListener("load", fetchHomeOnLoad()); // (not DRY?)
 
 // <--- Active Nav Link/Getting Pages Using Fetch --- //
 
