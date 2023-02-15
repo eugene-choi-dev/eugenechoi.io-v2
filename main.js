@@ -87,19 +87,24 @@ const homeNavActiveOnLoad = () => {
   navItems[0].classList.add("active");
 };
 
-const fetchHomeOnLoad = () => {
-  fetch("home.html")
-    .then(function (response) {
-      return response.text();
-    })
-    .then(function (data) {
-      main.innerHTML = data;
-      main.classList.add("active");
-    });
-};
+// const fetchHomeOnLoad = () => {
+//   fetch("home.html")
+//     .then(function (response) {
+//       return response.text();
+//     })
+//     .then(function (data) {
+//       main.innerHTML = data;
+//       main.classList.add("active");
+//     });
+// };
+
+const homeActiveOnLoad = () => {
+  main.classList.add("active");
+}
 
 document.addEventListener("load", homeNavActiveOnLoad());
 // document.addEventListener("load", fetchHomeOnLoad()); // (not DRY?)
+document.addEventListener("load", homeActiveOnLoad());
 
 // <--- Active Nav Link/Getting Pages Using Fetch --- //
 
