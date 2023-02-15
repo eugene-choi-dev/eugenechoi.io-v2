@@ -5,12 +5,12 @@
 
 const splash = document.getElementById("Splash");
 
-var removeSplash = function() {
+var removeSplash = function () {
   splash.remove();
-}
-window.onload = function() {
+};
+window.onload = function () {
   setTimeout(removeSplash, 1800);
-}
+};
 
 // <--- Splash --- //
 
@@ -47,31 +47,33 @@ lightSwitchDark[0].addEventListener("click", isDark);
 const navItems = document.querySelectorAll(".nav-item");
 const navLinks = document.querySelectorAll(".nav-link");
 const main = document.querySelector("main");
-// const sectionPages = document.getElementsByClassName("section-page");
 
-// adding/removing rotating square icon for active/inactive nav items ->
 Array.from(navLinks).forEach((navLink, index) => {
   const fetchPage = () => {
-    fetch(`${navLink.dataset.pages}.html`).then(function (response) {
-      return response.text();
-    })
-    .then(function (data) {
-      main.innerHTML = data; 
-    })
+    const url = `${navLink.dataset.pages}.html`;
+    setTimeout(function () {
+      fetch(url)
+        .then(function (response) {
+          return response.text();
+        })
+        .then(function (data) {
+          main.innerHTML = data;
+          setTimeout(function () {
+            main.classList.add("active");
+          }, 50);
+        });
+    }, 500);
   };
 
   const removeCurrentActive = () => {
     for (let navItem of navItems) {
       navItem.classList.remove("active");
     }
-    // for (let sectionPage of sectionPages) {
-    //   sectionPage.classList.remove("active");
-    // }
+    main.classList.remove("active");
   };
 
   const activateNavItem = () => {
     navItems[index].classList.add("active");
-    // sectionPages[index].classList.add("active");
   };
 
   navLink.addEventListener("click", () => {
@@ -85,13 +87,21 @@ const homeNavActiveOnLoad = () => {
   navItems[0].classList.add("active");
 };
 
+const fetchHomeOnLoad = () => {
+  fetch("home.html")
+    .then(function (response) {
+      return response.text();
+    })
+    .then(function (data) {
+      main.innerHTML = data;
+      main.classList.add("active");
+    });
+};
+
 document.addEventListener("load", homeNavActiveOnLoad());
-// <- adding/removing rotating square icon for active/inactive nav items
+document.addEventListener("load", fetchHomeOnLoad()); // (not DRY?)
 
 // <--- Active Nav Link/Getting Pages Using Fetch --- //
-
-
-
 
 // --- Three.js Background ---> //
 
@@ -120,8 +130,8 @@ scene.add(mesh);
 
 // Window Sizes //
 const sizes = {
-  width: (window.innerWidth),
-  height: (window.innerHeight),
+  width: window.innerWidth,
+  height: window.innerHeight,
 };
 
 // Light //
@@ -172,6 +182,5 @@ loop();
 // <--- Three.js Background --- //
 
 // ---  ---> //
-
 
 // <---  --- //
