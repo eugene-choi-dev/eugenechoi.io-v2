@@ -361,7 +361,8 @@ button {
 section {
   position: absolute;
   display: flex;
-  opacity: 0%;
+  /* opacity: 0%; */
+  opacity: 85%;
   transition: opacity ease-in 0.25s;
 }
 

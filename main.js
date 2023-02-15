@@ -42,28 +42,40 @@ lightSwitchDark[0].addEventListener("click", isDark);
 
 // <--- Light Switch --- //
 
-// --- Active Nav Link/Section ---> //
+// --- Active Nav Link/Getting Pages Using Fetch ---> //
 
-const navItems = document.getElementsByClassName("nav-item");
-const navLinks = document.getElementsByClassName("nav-link");
-const sectionPages = document.getElementsByClassName("section-page");
+const navItems = document.querySelectorAll(".nav-item");
+const navLinks = document.querySelectorAll(".nav-link");
+const main = document.querySelector("main");
+// const sectionPages = document.getElementsByClassName("section-page");
 
+// adding/removing rotating square icon for active/inactive nav items ->
 Array.from(navLinks).forEach((navLink, index) => {
+  const fetchPage = () => {
+    fetch(`${navLink.dataset.pages}.html`).then(function (response) {
+      return response.text();
+    })
+    .then(function (data) {
+      main.innerHTML = data; 
+    })
+  };
+
   const removeCurrentActive = () => {
     for (let navItem of navItems) {
       navItem.classList.remove("active");
     }
-    for (let sectionPage of sectionPages) {
-      sectionPage.classList.remove("active");
-    }
+    // for (let sectionPage of sectionPages) {
+    //   sectionPage.classList.remove("active");
+    // }
   };
 
   const activateNavItem = () => {
     navItems[index].classList.add("active");
-    sectionPages[index].classList.add("active");
+    // sectionPages[index].classList.add("active");
   };
 
   navLink.addEventListener("click", () => {
+    fetchPage();
     removeCurrentActive();
     activateNavItem();
   });
@@ -71,12 +83,15 @@ Array.from(navLinks).forEach((navLink, index) => {
 
 const homeNavActiveOnLoad = () => {
   navItems[0].classList.add("active");
-  sectionPages[0].classList.add("active");
 };
 
 document.addEventListener("load", homeNavActiveOnLoad());
+// <- adding/removing rotating square icon for active/inactive nav items
 
-// <--- Active Nav Link/Section --- //
+// <--- Active Nav Link/Getting Pages Using Fetch --- //
+
+
+
 
 // --- Three.js Background ---> //
 
@@ -156,23 +171,7 @@ loop();
 
 // <--- Three.js Background --- //
 
-// --- AJAX ---> //
+// ---  ---> //
 
-document.addEventListener("DOMContentLoaded", function() {
-  let navLinks = document.querySelectorAll(".nav-item a");
 
-  navLinks.forEach(function (navLink) {
-    navLink.addEventListener("click", function(e) {
-      e.preventDefault();
-      let url = this.getAttribute("href");
-      fetch(url)
-      .then(response=> response.text())
-      .then(html => {
-        document.querySelector("#content").innerHTML = html;
-      })
-      .catch(error => console.log(error));
-    });
-  });
-});
-
-// <--- AJAX --- //
+// <---  --- //
