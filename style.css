@@ -272,6 +272,7 @@ button {
   width: 54px;
   line-height: 1.2;
   transition: opacity ease-in 0.15s;
+  color: inherit;
 }
 
 .light-switch-light:hover {
@@ -283,6 +284,7 @@ button {
   width: 54px;
   line-height: 1.2;
   transition: opacity ease-in 0.15s;
+  color: inherit;
 }
 
 .light-switch-dark:hover {
