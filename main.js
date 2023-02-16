@@ -165,7 +165,7 @@ renderer.render(scene, camera);
 // OrbitControls Auto Rotate //
 const controls = new OrbitControls(camera, canvas);
 controls.autoRotate = true;
-controls.autoRotateSpeed = 0.017;
+controls.autoRotateSpeed = 0.025;
 
 // Resize //
 window.addEventListener("resize", () => {
