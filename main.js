@@ -51,7 +51,7 @@ const main = document.querySelector("main");
 Array.from(navLinks).forEach((navLink, index) => {
   const fetchPage = (event) => {
     event.preventDefault();
-    const url = `${navLink.dataset.pages}.html`;
+    const url = `pages/${navLink.dataset.pages}.html`;
     setTimeout(function () {
       fetch(url)
         .then(function (response) {
@@ -90,7 +90,7 @@ const homeNavActiveOnLoad = () => {
 };
 
 const fetchHomeOnLoad = () => {
-  fetch("home.html")
+  fetch("pages/home.html")
     .then(function (response) {
       return response.text();
     })
@@ -106,7 +106,7 @@ const homeActiveOnLoad = () => {
 
 document.addEventListener("load", homeNavActiveOnLoad());
 document.addEventListener("load", fetchHomeOnLoad()); // not DRY?
-document.addEventListener("load", homeActiveOnLoad());
+// document.addEventListener("load", homeActiveOnLoad());
 
 // <--- Active Nav Link/Getting Pages Using Fetch --- //
 
@@ -121,7 +121,6 @@ const scene = new THREE.Scene();
 const sprite = new THREE.TextureLoader().load(discUrl);
 
 // Mesh //
-// const geometry = new THREE.SphereGeometry(3, 70, 70);
 const geometry = new THREE.SphereGeometry(3, 100, 100);
 const material = new THREE.PointsMaterial({
   size: 0.03,
