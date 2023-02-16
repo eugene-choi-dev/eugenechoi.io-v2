@@ -77,12 +77,12 @@ Array.from(navLinks).forEach((navLink, index) => {
     navItems[index].classList.add("active");
   };
 
-  navLink.addEventListener("click", fetchPage); // does not work when wrapped in anonymous function
-
   navLink.addEventListener("click", () => {
     removeCurrentActive();
     activateNavItem();
   });
+
+  navLink.addEventListener("click", fetchPage); // does not work when wrapped in anonymous function
 });
 
 const homeNavActiveOnLoad = () => {
@@ -106,7 +106,7 @@ const homeActiveOnLoad = () => {
 
 document.addEventListener("load", homeNavActiveOnLoad());
 document.addEventListener("load", fetchHomeOnLoad()); // not DRY?
-// document.addEventListener("load", homeActiveOnLoad());
+document.addEventListener("load", homeActiveOnLoad());
 
 // <--- Active Nav Link/Getting Pages Using Fetch --- //
 

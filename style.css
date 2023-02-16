@@ -233,7 +233,7 @@ button {
   opacity: 100%;
   transition: opacity ease-in 1s;
   transition-delay: 0.15s;
-  /* animation: rotate 11s linear infinite; */
+  animation: rotate 11s linear infinite;
 }
 
 @keyframes rotate {
