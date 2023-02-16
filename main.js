@@ -52,19 +52,8 @@ Array.from(navLinks).forEach((navLink, index) => {
   const fetchPage = (event) => {
     event.preventDefault();
     const url = `pages/${navLink.dataset.pages}.html`;
-    // setTimeout(function () {
-    //   fetch(url)
-    //     .then(function (response) {
-    //       return response.text();
-    //     })
-    //     .then(function (data) {
-    //       main.innerHTML = data;
-    //       setTimeout(function () {
-    //         main.classList.add("active");
-    //       }, 50);
-    //     });
-    // }, 500);
-    fetch(url)
+    setTimeout(function () {
+      fetch(url)
         .then(function (response) {
           return response.text();
         })
@@ -74,6 +63,7 @@ Array.from(navLinks).forEach((navLink, index) => {
             main.classList.add("active");
           }, 50);
         });
+    }, 500);
   };
 
   const removeCurrentActive = () => {
