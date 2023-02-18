@@ -14,6 +14,83 @@ window.onload = function () {
 
 // <--- Splash --- //
 
+// --- Three.js Background ---> //
+
+import * as THREE from "three";
+import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
+import discUrl from "/assets/disc.png";
+
+// Scene //
+const scene = new THREE.Scene();
+const sprite = new THREE.TextureLoader().load(discUrl);
+
+// Mesh //
+const geometry = new THREE.SphereGeometry(3, 100, 100);
+const material = new THREE.PointsMaterial({
+  size: 0.03,
+  color: 0x303030,
+  map: sprite,
+  alphaTest: 0.5,
+});
+const mesh = new THREE.Points(geometry, material);
+mesh.position.x = 1.4;
+mesh.position.y = 0.8;
+mesh.rotation.x = 15.2;
+scene.add(mesh);
+
+// Window Sizes //
+const sizes = {
+  width: window.innerWidth,
+  height: window.innerHeight,
+};
+
+// Light //
+const light = new THREE.AmbientLight(0xfffff, 1, 100);
+scene.add(light);
+
+// Camera //
+const camera = new THREE.PerspectiveCamera(
+  45,
+  sizes.width / sizes.height,
+  0.1,
+  100
+);
+camera.position.z = 5;
+scene.add(camera);
+
+// Renderer //
+const canvas = document.querySelector(".webgl");
+const renderer = new THREE.WebGLRenderer({ canvas });
+renderer.setSize(sizes.width, sizes.height);
+renderer.setPixelRatio(2);
+renderer.setClearColor(0xffffff, 0);
+renderer.render(scene, camera);
+
+// OrbitControls Auto Rotate //
+const controls = new OrbitControls(camera, canvas);
+controls.autoRotate = true;
+controls.autoRotateSpeed = 0.025;
+
+// Resize //
+window.addEventListener("resize", () => {
+  // Update Sizes
+  sizes.width = window.innerWidth;
+  sizes.height = window.innerHeight;
+  // Update Camera
+  camera.aspect = sizes.width / sizes.height;
+  camera.updateProjectionMatrix();
+  renderer.setSize(sizes.width, sizes.height);
+});
+
+const loop = () => {
+  controls.update();
+  renderer.render(scene, camera);
+  window.requestAnimationFrame(loop);
+};
+loop();
+
+// <--- Three.js Background --- //
+
 // --- Light Switch ---> //
 
 const page = document.getElementById("Page");
@@ -110,83 +187,23 @@ document.addEventListener("load", homeActiveOnLoad());
 
 // <--- Active Nav Link/Getting Pages Using Fetch --- //
 
-// --- Three.js Background ---> //
+// --- Project Items ---> //
 
-import * as THREE from "three";
-import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
-import discUrl from "/assets/disc.png";
+// const projects = document.querySelectorAll(".project-item")
+// const projectButtons = document.querySelectorAll(".project-item button");
 
-// Scene //
-const scene = new THREE.Scene();
-const sprite = new THREE.TextureLoader().load(discUrl);
+// projectButtons.forEach((projectButton) => {
+//   const makeActive = () => {
+//     projectButton
+//   }
+// })
 
-// Mesh //
-const geometry = new THREE.SphereGeometry(3, 100, 100);
-const material = new THREE.PointsMaterial({
-  size: 0.03,
-  color: 0x303030,
-  map: sprite,
-  alphaTest: 0.5,
-});
-const mesh = new THREE.Points(geometry, material);
-mesh.position.x = 1.4;
-mesh.position.y = 0.8;
-mesh.rotation.x = 15.2;
-scene.add(mesh);
-
-// Window Sizes //
-const sizes = {
-  width: window.innerWidth,
-  height: window.innerHeight,
-};
-
-// Light //
-const light = new THREE.AmbientLight(0xfffff, 1, 100);
-scene.add(light);
-
-// Camera //
-const camera = new THREE.PerspectiveCamera(
-  45,
-  sizes.width / sizes.height,
-  0.1,
-  100
-);
-camera.position.z = 5;
-scene.add(camera);
-
-// Renderer //
-const canvas = document.querySelector(".webgl");
-const renderer = new THREE.WebGLRenderer({ canvas });
-renderer.setSize(sizes.width, sizes.height);
-renderer.setPixelRatio(2);
-renderer.setClearColor(0xffffff, 0);
-renderer.render(scene, camera);
-
-// OrbitControls Auto Rotate //
-const controls = new OrbitControls(camera, canvas);
-controls.autoRotate = true;
-controls.autoRotateSpeed = 0.025;
-
-// Resize //
-window.addEventListener("resize", () => {
-  // Update Sizes
-  sizes.width = window.innerWidth;
-  sizes.height = window.innerHeight;
-  // Update Camera
-  camera.aspect = sizes.width / sizes.height;
-  camera.updateProjectionMatrix();
-  renderer.setSize(sizes.width, sizes.height);
-});
-
-const loop = () => {
-  controls.update();
-  renderer.render(scene, camera);
-  window.requestAnimationFrame(loop);
-};
-loop();
-
-// <--- Three.js Background --- //
+// <--- Project Items --- //
 
 // ---  ---> //
 
 // <---  --- //
+
+
+
+//// WHERE WE LEFT OFF: ADDING THE JAVASCRIPT TO ADD .project-is-active AND .project-is-sneaky CLASSES TO APPROPRIATE PROJECT BUTTONS ////
