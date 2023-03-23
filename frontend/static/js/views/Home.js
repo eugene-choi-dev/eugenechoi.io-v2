@@ -1,0 +1,24 @@
+import AbstractView from "./AbstractView.js";
+
+export default class extends AbstractView {
+  constructor() {
+    super();
+    this.setTitle("home");
+  }
+
+  async getHtml() {
+    return `
+    <section class="section-page" id="Home-Section" data-pages="home">
+        <div class="section-content">
+            <p>
+            i am a full stack web developer lorem ipsum. this is me saying in an
+            unnecessarily grandiose way that i do the web things on the internet.
+            lorem ipsum lorem, something something. i have skills, i have ideas, i
+            have experience. my great vision is making money by doing this thing. hire
+            me lorem ipsum.
+            </p>
+        </div>
+    </section>
+    `;
+  }
+}

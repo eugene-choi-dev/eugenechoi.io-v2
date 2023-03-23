@@ -6,13 +6,28 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "start": "node server.js"
   },
   "devDependencies": {
     "vite": "^4.0.0",
     "vite-plugin-pages": "^0.28.0"
   },
   "dependencies": {
+    "express": "^4.18.2",
     "three": "^0.148.0"
-  }
+  },
+  "main": "main.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eugene-choi-dev/eugenechoi.io-v2.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/eugene-choi-dev/eugenechoi.io-v2/issues"
+  },
+  "homepage": "https://github.com/eugene-choi-dev/eugenechoi.io-v2#readme",
+  "description": ""
 }

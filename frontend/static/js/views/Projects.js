@@ -1,0 +1,33 @@
+import AbstractView from "./AbstractView.js";
+
+export default class extends AbstractView {
+  constructor() {
+    super();
+    this.setTitle("projects");
+  }
+
+  async getHtml() {
+    return `
+    <section class="section-page" id="Projects-Section" data-pages="projects">
+        <div class="section-content">
+            <div class="project-item" data-project="eugene-choi-io">
+                <div class="project-item-content">project item content</div>
+                <button>eugene choi .io</button>
+            </div>
+            <div class="project-item" data-project="loved01">
+                <div class="project-item-content">project item content</div>
+                <button>loved01</button>
+            </div>
+            <div class="project-item" data-project="emijay">
+                <div class="project-item-content">project item content</div>
+                <button>emijay</button>
+            </div>
+            <div class="project-item" data-project="bhansali">
+                <div class="project-item-content">project item content</div>
+                <button>bhansali</button>
+            </div>
+        </div>
+    </section>;
+    `;
+  }
+}

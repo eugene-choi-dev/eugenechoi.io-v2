@@ -1,5 +1,59 @@
-// ---  ---> //
-// <---  --- //
+import Home from "./views/Home.js";
+import Projects from "./views/Projects.js";
+import Process from "./views/Process.js";
+import Info from "./views/Info.js";
+import Contact from "./views/Contact.js";
+
+// --- SPA Navigation/Routing ---> //
+const navigateTo = (url) => {
+  history.pushState(null, null, url);
+  router();
+};
+
+const router = async () => {
+  const routes = [
+    { path: "/home", view: Home },
+    { path: "/projects", view: Projects },
+    { path: "/process", view: Process },
+    { path: "/info", view: Info },
+    { path: "/contact", view: Contact },
+  ];
+
+  const potentialMatches = routes.map((route) => {
+    return {
+      route: route,
+      isMatch: location.pathname === route.path,
+    };
+  });
+
+  let match = potentialMatches.find((potentialMatch) => potentialMatch.isMatch);
+
+  if (!match) {
+    match = {
+      route: routes[0],
+      isMatch: true,
+    };
+  }
+
+  const view = new match.route.view();
+
+  document.querySelector("#app").innerHTML = await view.getHtml();
+};
+
+window.addEventListener("popstate", router);
+
+document.addEventListener("DOMContentLoaded", () => {
+  document.body.addEventListener("click", (e) => {
+    if (e.target.matches("[data-link")) {
+      e.preventDefault();
+      navigateTo(e.target.href);
+    }
+  });
+
+  router();
+});
+
+// <--- SPA Navigation/Routing --- //
 
 // --- Splash ---> //
 
@@ -15,10 +69,8 @@ window.onload = function () {
 // <--- Splash --- //
 
 // --- Three.js Background ---> //
-
-import * as THREE from "three";
-import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
-import discUrl from "/assets/disc.png";
+import * as THREE from 'three';
+import discUrl from "../../assets/disc.png";
 
 // Scene //
 const scene = new THREE.Scene();
@@ -111,7 +163,7 @@ const isDark = () => {
   lightSwitchLight[0].classList.remove("active-button");
 };
 
-// default to dark mode //
+// default to light mode //
 document.addEventListener("load", isLight());
 
 lightSwitchLight[0].addEventListener("click", isLight);
@@ -126,22 +178,22 @@ const navLinks = document.querySelectorAll(".nav-link");
 const main = document.querySelector("main");
 
 Array.from(navLinks).forEach((navLink, index) => {
-  const fetchPage = (event) => {
-    event.preventDefault();
-    const url = `pages/${navLink.dataset.pages}.html`;
-    setTimeout(function () {
-      fetch(url)
-        .then(function (response) {
-          return response.text();
-        })
-        .then(function (data) {
-          main.innerHTML = data;
-          setTimeout(function () {
-            main.classList.add("active");
-          }, 50);
-        });
-    }, 500);
-  };
+//   const fetchPage = (event) => {
+//     event.preventDefault();
+//     const url = `pages/${navLink.dataset.pages}.html`;
+//     setTimeout(function () {
+//       fetch(url)
+//         .then(function (response) {
+//           return response.text();
+//         })
+//         .then(function (data) {
+//           main.innerHTML = data;
+//           setTimeout(function () {
+//             main.classList.add("active");
+//           }, 50);
+//         });
+//     }, 500);
+//   };
 
   const removeCurrentActive = () => {
     for (let navItem of navItems) {
@@ -157,53 +209,56 @@ Array.from(navLinks).forEach((navLink, index) => {
   navLink.addEventListener("click", () => {
     removeCurrentActive();
     activateNavItem();
+    main.classList.add("active");
   });
 
-  navLink.addEventListener("click", fetchPage); // does not work when wrapped in anonymous function
+//   navLink.addEventListener("click", fetchPage); // does not work when wrapped in anonymous function
 });
 
 const homeNavActiveOnLoad = () => {
   navItems[0].classList.add("active");
 };
 
-const fetchHomeOnLoad = () => {
-  fetch("pages/home.html")
-    .then(function (response) {
-      return response.text();
-    })
-    .then(function (data) {
-      main.innerHTML = data;
-      main.classList.add("active");
-    });
-};
+// const fetchHomeOnLoad = () => {
+//   fetch("pages/home.html")
+//     .then(function (response) {
+//       return response.text();
+//     })
+//     .then(function (data) {
+//       main.innerHTML = data;
+//       main.classList.add("active");
+//     });
+// };
 
 const homeActiveOnLoad = () => {
   main.classList.add("active");
-}
+};
 
 document.addEventListener("load", homeNavActiveOnLoad());
-document.addEventListener("load", fetchHomeOnLoad()); // not DRY?
-document.addEventListener("load", homeActiveOnLoad());
+// document.addEventListener("load", fetchHomeOnLoad()); // not DRY?
+// document.addEventListener("load", homeActiveOnLoad());
 
 // <--- Active Nav Link/Getting Pages Using Fetch --- //
 
 // --- Project Items ---> //
 
-// const projects = document.querySelectorAll(".project-item")
-// const projectButtons = document.querySelectorAll(".project-item button");
+const projects = document.querySelectorAll(".project-item");
 
-// projectButtons.forEach((projectButton) => {
-//   const makeActive = () => {
-//     projectButton
-//   }
-// })
+projects.forEach((project) => {
+  const button = project.querySelector("button");
+  const makeActive = () => {
+    button.classList.add("project-is-active");
+    console.log("poop");
+  };
+  button.addEventListener("click", makeActive);
+});
+
+// Note: need to research how to handle dynamically loaded content in terms of
+// associating it with js. plus, we should look into single page application url
+// handling/routing, general application architecture.
 
 // <--- Project Items --- //
 
 // ---  ---> //
 
 // <---  --- //
-
-
-
-//// WHERE WE LEFT OFF: ADDING THE JAVASCRIPT TO ADD .project-is-active AND .project-is-sneaky CLASSES TO APPROPRIATE PROJECT BUTTONS ////

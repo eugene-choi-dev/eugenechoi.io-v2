@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -22,7 +21,7 @@
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" /> -->
 
-    <link rel="stylesheet" href="/style.css" />
+    <link rel="stylesheet" href="/static/css/index.css">
     <link rel="stylesheet" href="https://use.typekit.net/lud6znu.css" />
     <!-- 
       font-family: "regulator-nova", sans-serif;
@@ -55,8 +54,8 @@
               <a
                 class="nav-link"
                 id="Home-Nav-Link"
-                href="pages/home.html"
-                data-pages="home"
+                href="/"
+                data-link
                 >home</a
               >
             </div>
@@ -65,8 +64,8 @@
               <a
                 class="nav-link"
                 id="Projects-Nav-Link"
-                href="pages/projects.html"
-                data-pages="projects"
+                href="/projects"
+                data-link
                 >projects</a
               >
             </div>
@@ -75,8 +74,8 @@
               <a
                 class="nav-link"
                 id="Process-Nav-Link"
-                href="pages/process.html"
-                data-pages="process"
+                href="/process"
+                data-link
                 >process</a
               >
             </div>
@@ -85,8 +84,8 @@
               <a
                 class="nav-link"
                 id="Info-Nav-Link"
-                href="pages/info.html"
-                data-pages="info"
+                href="/info"
+                data-link
                 >info</a
               >
             </div>
@@ -95,16 +94,15 @@
               <a
                 class="nav-link"
                 id="Contact-Nav-Link"
-                href="pages/contact.html"
-                data-pages="contact"
+                href="/contact"
+                data-link
                 >contact</a
               >
             </div>
           </nav>
         </header>
         <main>
-          <section class="section-page" >
-          </section>
+          <section id="app" class="section-page"></section>
         </main>
       </div>
       <div class="light-switch">
@@ -116,6 +114,6 @@
         </button>
       </div>
     </div>
-    <script type="module" src="/main.js"></script>
+    <script type='module' src="/static/js/index.js"></script>
   </body>
 </html>
